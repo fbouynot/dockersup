@@ -9,6 +9,8 @@ It displays the container runing or inactive container images on the target host
 At the time of writing, there is a bug on the sever side of the software causing it to crash on the second query.
 The infinite loop maintaining the server in listening state stops when we use a free(var_msg).
 
+Besides, the high number of files is a design desicion in order to ease the burden of collaborative work.
+
 ## Software compilation
 
 We recomand the use of Clion.
