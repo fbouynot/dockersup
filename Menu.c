@@ -26,6 +26,7 @@ int Menu()
                 break;
             case 2: Query();
                 break;
+            case 3: exit(0);
             default: printf("Invalid choice!\n");
                 break;
         }
