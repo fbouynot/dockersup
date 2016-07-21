@@ -24,7 +24,7 @@
 #include <stdarg.h>
 #include <string.h>
 
-int Server(int argc, char *argv[])
+int Server()
 {
     struct sockaddr_in toto;
     int num_socket;
