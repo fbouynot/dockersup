@@ -19,8 +19,6 @@ int Server()
     int num_socket;
     int num_bind;
     int num_service;
-    char tmp_msg[1024];
-    char * var_msg;
 
     // Création d'un socket, domaine internet, protocole TCP
     // AF_INET indique le protocole TCP/IP
@@ -35,7 +33,7 @@ int Server()
 
     // Création de la structure
     toto.sin_family = AF_INET; //AF_INET pour socket IP, AF_UNIX pour socket Unix
-    toto.sin_port = htons(5009);
+    toto.sin_port = htons(5010);
     // inet_addr transforme un string en table[4], INADDR_ANY accepte toutes les IP
     toto.sin_addr.s_addr = htonl(INADDR_ANY); //inet_addr("127.0.0.1") pour local uniquement;
 
@@ -73,18 +71,10 @@ int Server()
         // INVALID_SOCKET vaut -1
         if (num_service != -1)
         {
-            // recv renvoie la taille du message, on la stocke dans taille
-            // On stocke le message recu dans tmp_message
-
-            ssize_t taille = recv(num_service, tmp_msg, 1024, 0);
-
-            // Pour une chaine de n charactere, on ajoute \0 au charactere n+1 pour ne lire que ce qui est necessaire
-            tmp_msg[taille] = 0;
-            printf("%s\n", tmp_msg);
-
+            char * var_msg = malloc(sizeof(char) * 1024);
             var_msg = GetInfo();
-            printf("***\n%s\n***", var_msg);
             send(num_service, var_msg, strlen(var_msg), 0);
+            free(var_msg);
         }
     }
 
