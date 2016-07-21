@@ -8,8 +8,8 @@
 
 int main(int argc, char *argv[])
 {
-    Alex();
     Felix();
+    Alex();
 
     return 0;
 }
