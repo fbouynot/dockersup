@@ -11,7 +11,7 @@
 void Query()
 {
     char* server_ip = malloc(sizeof(char) * 1024);
-FILE * fp;
+    FILE * fp;
     fp = fopen("ip.conf", "r");
     if (fp == NULL) {
         printf ("Echec d'ouverture du fichier, erreur numéro %d\n", errno);

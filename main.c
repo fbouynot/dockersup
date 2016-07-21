@@ -7,6 +7,8 @@
 
 int main(int argc, char *argv[])
 {
+    /* Afin, pour les tests, de lancer serveur et client dans le même programme, nous utilisons un fork qui lance le
+     * serveur et le client */
     pid_t pid;
     pid = fork();
     if (pid == -1)
@@ -20,6 +22,7 @@ int main(int argc, char *argv[])
     }
     else
     {
+        /* On attend une seconde que le serveur soit lancé */
         sleep(1);
         Menu();
     }
