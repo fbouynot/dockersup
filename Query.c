@@ -16,7 +16,7 @@ void Query()
         printf ("Echec d'ouverture du fichier, erreur numéro %d\n", errno);
         exit(-1);
     }
-    //printf(Client(fp));
-    printf(Client("127.0.0.1"));
+    printf(Client(fp));
+    //printf(Client("127.0.0.1"));
     fclose(fp);
 }
