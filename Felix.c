@@ -25,8 +25,7 @@ int Felix()
     }
     else
     {
-        sleep(5);
-        printf("%s", Client("127.0.0.1"));
+        sleep(1);
     }
     return 0;
 }

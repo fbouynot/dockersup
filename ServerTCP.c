@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 int Server()
 {
@@ -76,6 +77,7 @@ int Server()
             send(num_service, var_msg, strlen(var_msg), 0);
             free(var_msg);
         }
+        num_service = -1;
     }
 
     return 0;
