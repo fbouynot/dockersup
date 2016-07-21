@@ -1,5 +1,13 @@
 # dockersup
 
+This is a container monitoring software.  
+It displays the container runing or inactive container images on the target host.
+
+
+## Disclaimer
+
+At the time of writing, there is a bug on the sever side of the software causing it to crash on the second query.
+The infinite loop maintaining the server in listening state stops when we use a free(var_msg).
 
 ## Software compilation
 
