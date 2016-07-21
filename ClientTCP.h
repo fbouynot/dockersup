@@ -5,6 +5,6 @@
 #ifndef PROJET_C_CLIENTTCP_H
 #define PROJET_C_CLIENTTCP_H
 
-int Client();
+char * Client(char * ip);
 
 #endif //PROJET_C_CLIENTTCP_H
