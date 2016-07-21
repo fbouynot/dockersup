@@ -6,6 +6,6 @@
 #define DOCKERSUP_ALEX_H
 
 int Alex();
-void TestPopen ();
+char* GetInfo();
 
 #endif //DOCKERSUP_ALEX_H

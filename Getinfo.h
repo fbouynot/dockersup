@@ -5,6 +5,6 @@
 #ifndef PROJET_C_GETINFO_H
 #define PROJET_C_GETINFO_H
 
-void TestPopen();
+char* GetInfo();
 
 #endif //PROJET_C_GETINFO_H

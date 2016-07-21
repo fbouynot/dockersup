@@ -4,9 +4,12 @@
 
 #include "Alex.h"
 #include "Getinfo.h"
+#include "stdio.h"
+#include "stdlib.h"
 
 int Alex()
 {
-    TestPopen();
+    char* info = GetInfo();
+    printf("%s\n", info);
     return 0;
 }

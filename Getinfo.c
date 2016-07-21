@@ -5,12 +5,16 @@
 #include "Getinfo.h"
 #include "stdio.h"
 #include "stdlib.h"
+#include <string.h>
 
-void TestPopen () {
+char* GetInfo() {
     char buff[BUFSIZ];
+    char* msg_popen = malloc(sizeof(char) * 1024);
     FILE *fp = popen("docker ps -a", "r");
     while (fgets(buff, BUFSIZ, fp) != NULL) {
-        printf("%s", buff);
+        strcat(msg_popen, buff);
     }
     pclose(fp);
+    free(msg_popen);
+    return msg_popen;
 }
