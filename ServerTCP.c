@@ -7,22 +7,10 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include <unistd.h>
 #include <arpa/inet.h>
-#include <netdb.h>
-#include <unistd.h>
-#include <signal.h>
 #include <stdio.h>
 #include <string.h>
-#include <fcntl.h>
-#include <errno.h>
-#include <sys/time.h>
 #include <stdlib.h>
-#include <memory.h>
-#include <ifaddrs.h>
-#include <net/if.h>
-#include <stdarg.h>
-#include <string.h>
 
 int Server()
 {
@@ -48,9 +36,9 @@ int Server()
     }
 
     // Création de la structure
-    toto.sin_family = AF_INET;
-    toto.sin_port = htons(5000);
-    // inet_addr transforme en table[4]
+    toto.sin_family = AF_INET; //AF_INET pour socket IP, AF_UNIX pour socket Unix
+    toto.sin_port = htons(5001);
+    // inet_addr transforme en table[4], INADDR_ANY accepte toutes les IP
     toto.sin_addr.s_addr = htonl(INADDR_ANY);//inet_addr("127.0.0.1");
 
     // Création du bind, dont on stocke le numero dans num_bind
