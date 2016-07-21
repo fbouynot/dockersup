@@ -4,6 +4,11 @@ This is a container monitoring software.
 It displays the container runing or inactive container images on the target host.
 
 
+## Release
+
+[dockersup-0.9-beta](https://github.com/fbouynot/dockersup/releases/tag/v0.9-beta)
+
+
 ## Disclaimer
 
 At the time of writing, there is a bug on the sever side of the software causing it to crash on the second query.
