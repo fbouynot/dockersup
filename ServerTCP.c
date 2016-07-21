@@ -3,7 +3,6 @@
 //
 
 #include "ServerTCP.h"
-#include "Getinfo.h"
 
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -19,7 +18,10 @@ int Server()
     int num_socket;
     int num_bind;
     int num_service;
-    char tmp_msg[1024];
+    char tmp_msg[256];
+    char buffer[256];
+    int num_send;
+    int tmp;
     char * var_msg;
 
     // Création d'un socket, domaine internet, protocole TCP
@@ -35,9 +37,9 @@ int Server()
 
     // Création de la structure
     toto.sin_family = AF_INET; //AF_INET pour socket IP, AF_UNIX pour socket Unix
-    toto.sin_port = htons(5003);
-    // inet_addr transforme un string en table[4], INADDR_ANY accepte toutes les IP
-    toto.sin_addr.s_addr = htonl(INADDR_ANY); //inet_addr("127.0.0.1") pour local uniquement;
+    toto.sin_port = htons(5001);
+    // inet_addr transforme en table[4], INADDR_ANY accepte toutes les IP
+    toto.sin_addr.s_addr = htonl(INADDR_ANY);//inet_addr("127.0.0.1");
 
     // Création du bind, dont on stocke le numero dans num_bind
     // num_socket est le numero du socket
@@ -82,8 +84,7 @@ int Server()
             tmp_msg[taille] = 0;
             printf("%s\n", tmp_msg);
 
-            var_msg = "Toto\nTata";
-            //var_msg = TestPopen();
+            var_msg = "Bienvenue sur le serveur.";
             send(num_service, var_msg, strlen(var_msg), 0);
         }
     }
