@@ -3,3 +3,14 @@
 //
 
 #include "Getinfo.h"
+#include "stdio.h"
+#include "stdlib.h"
+
+void TestPopen () {
+    char buff[BUFSIZ];
+    FILE *fp = popen("docker ps -a", "r");
+    while (fgets(buff, BUFSIZ, fp) != NULL) {
+        printf("Container->%s", buff);
+    }
+    pclose(fp);
+}
