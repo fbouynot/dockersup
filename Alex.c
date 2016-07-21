@@ -6,10 +6,10 @@
 #include "Getinfo.h"
 #include "stdio.h"
 #include "stdlib.h"
+#include "Menu.h"
 
 int Alex()
 {
-    char* info = GetInfo();
-    printf("%s\n", info);
+    Menu();
     return 0;
 }

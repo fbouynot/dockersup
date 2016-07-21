@@ -6,6 +6,7 @@
 #include "stdlib.h"
 #include "stdio.h"
 #include "Query.h"
+#include "SetServerIp.h"
 
 int Menu()
 {
