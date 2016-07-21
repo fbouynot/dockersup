@@ -26,7 +26,7 @@ char * Client(char * ip)
 
     // Création de la structure
     titi.sin_family = AF_INET; //AF_INET pour socket IP, AF_UNIX pour socket Unix
-    titi.sin_port = htons(5003);
+    titi.sin_port = htons(5004);
     // inet_addr transforme un string en table[4]
     titi.sin_addr.s_addr = inet_addr(ip);
 

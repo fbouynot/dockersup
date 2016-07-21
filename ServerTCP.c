@@ -35,7 +35,7 @@ int Server()
 
     // Création de la structure
     toto.sin_family = AF_INET; //AF_INET pour socket IP, AF_UNIX pour socket Unix
-    toto.sin_port = htons(5003);
+    toto.sin_port = htons(5004);
     // inet_addr transforme un string en table[4], INADDR_ANY accepte toutes les IP
     toto.sin_addr.s_addr = htonl(INADDR_ANY); //inet_addr("127.0.0.1") pour local uniquement;
 
@@ -82,8 +82,7 @@ int Server()
             tmp_msg[taille] = 0;
             printf("%s\n", tmp_msg);
 
-            var_msg = "Toto\nTata";
-            //var_msg = TestPopen();
+            var_msg = GetInfo();
             send(num_service, var_msg, strlen(var_msg), 0);
         }
     }
