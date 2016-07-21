@@ -10,7 +10,7 @@ void TestPopen () {
     char buff[BUFSIZ];
     FILE *fp = popen("docker ps -a", "r");
     while (fgets(buff, BUFSIZ, fp) != NULL) {
-        printf("Container->%s", buff);
+        printf("%s", buff);
     }
     pclose(fp);
 }

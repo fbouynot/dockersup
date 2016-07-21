@@ -3,9 +3,10 @@
 //
 
 #include "Alex.h"
+#include "Getinfo.h"
 
 int Alex()
 {
-
+    TestPopen();
     return 0;
 }
