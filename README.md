@@ -3,6 +3,9 @@
 This is a container monitoring software.  
 It displays the container runing or inactive container images on the target host.
 
+## Usage and description  
+
+Refer to the [notice file.](https://github.com/fbouynot/dockersup/blob/master/NOTICE.md#dockersup---usage-and-program-description)  
 
 ## Release
 
