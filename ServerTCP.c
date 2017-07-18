@@ -67,7 +67,7 @@ int Server()
         // On extrait la connexion vers le port de service
         // num_service stocke la numero do socket de service, réservé à cette connexion
         // num_socket est le numero du socket original
-        num_service = accept(num_socket, &toto, (socklen_t*)&tutu);
+        num_service = accept(num_socket, (struct sockaddr *) &toto, (socklen_t *) &tutu);
         // INVALID_SOCKET vaut -1
         if (num_service != -1)
         {

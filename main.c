@@ -28,4 +28,5 @@ int main(int argc, char *argv[])
     }
 
     return 0;
+/* set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11") */
 }
