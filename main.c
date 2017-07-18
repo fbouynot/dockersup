@@ -18,7 +18,9 @@ int main(int argc, char *argv[])
     }
     else if (pid == 0)
     {
-        Server();
+        /* Bloc du serveur */
+        /* Création d'un serveur TCP */
+        Server(5000);
     }
     else
     {
@@ -28,5 +30,5 @@ int main(int argc, char *argv[])
     }
 
     return 0;
-/* set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11") */
+
 }

@@ -21,7 +21,7 @@ void Query()
     // "%15[^\n]" signifie que fscnaf lira tous les carracteres de fp sauf '\n'
     // et s'arretera s'il le rencontre ou apres les 15er carracteres.
     fscanf(fp, "%15[^\n]", server_ip);
-    printf(Client(server_ip));
+    printf(Client(server_ip, 5011));
     fclose(fp);
     free(server_ip);
 }

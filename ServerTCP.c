@@ -12,8 +12,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <signal.h>
+#include <unistd.h>
 
-int Server()
+int Server(uint16_t port)
 {
     struct sockaddr_in toto;
     int num_socket;
@@ -24,16 +26,24 @@ int Server()
     // AF_INET indique le protocole TCP/IP
     // SOCK_STREAM indique un protocole connecté : TCP (au contraire d'UDP)
     num_socket = socket(AF_INET, SOCK_STREAM, 0);
+    int reuse = 1;
     if (num_socket == -1)
     {
         // Erreur lors de la creation du socket
         printf("Erreur lors de la creation du socket\n");
         exit(-1);
     }
+    if (setsockopt(num_socket, SOL_SOCKET, SO_REUSEADDR, (const char*)&reuse, sizeof(reuse)) < 0)
+        perror("setsockopt(SO_REUSEADDR) failed");
+
+#ifdef SO_REUSEPORT
+    if (setsockopt(num_socket, SOL_SOCKET, SO_REUSEPORT, (const char*)&reuse, sizeof(reuse)) < 0)
+        perror("setsockopt(SO_REUSEPORT) failed");
+#endif
 
     // Création de la structure
     toto.sin_family = AF_INET; //AF_INET pour socket IP, AF_UNIX pour socket Unix
-    toto.sin_port = htons(5010);
+    toto.sin_port = htons(port);
     // inet_addr transforme un string en table[4], INADDR_ANY accepte toutes les IP
     toto.sin_addr.s_addr = htonl(INADDR_ANY); //inet_addr("127.0.0.1") pour local uniquement;
 
