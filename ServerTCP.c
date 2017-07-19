@@ -1,7 +1,3 @@
-//
-// Created by felix on 21/07/16.
-//
-
 #include "ServerTCP.h"
 #include "Processmessage.h"
 
@@ -95,7 +91,6 @@ int Server(uint16_t port)
                 if (taille < 0) {
                     perror("Erreur inconnue.");
                 }
-
                 /* traitement du message */
                 send_msg = Processmessage(rcv_msg, &login, &identified, &try);
 

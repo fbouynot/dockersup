@@ -5,13 +5,17 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h> /* close */
+#include <string.h>
 
-char * Client(char * ip, uint16_t port)
+int Client(char * ip, uint16_t port)
 {
     // Création de titi, dont le type est une structure sockaddr_in, contenant entre autres l'ip et le port
     struct sockaddr_in titi;
     int num_socket;
-    char * tmp_msg = malloc(sizeof(char) * 1024);
+    char * rcv_msg = malloc(sizeof(char) * 1024);
+    char * send_msg = malloc(sizeof(char) * 1024);
+    int identified = 0;
+    rcv_msg = "";
 
     // Création d'un socket, dont on stocke le numero dans num_socket
     num_socket = socket(AF_INET, SOCK_STREAM, 0);
@@ -38,16 +42,27 @@ char * Client(char * ip, uint16_t port)
         exit(-1);
     }
 
-    // num_socket est le numero du socket
-    // tmp_msg stocke le message recu
-    ssize_t taille = recv(num_socket, tmp_msg, 1024, 0);
+    while (strcmp(rcv_msg, "BYE") != 0) {
 
-    // Pour une chaine de n charactere, on ajoute \0 au charactere n+1 pour ne lire que ce qui est necessaire
-    tmp_msg[taille] = 0;
+        /* traitement du message */
+        send_msg = Action(rcv_msg, &identified);
 
-    // Affichage en local du message recu
+        /* emission de la réponse */
+        send(num_socket, send_msg, strlen(send_msg), 0);
+
+        // num_socket est le numero du socket
+        // tmp_msg stocke le message recu
+        ssize_t taille = recv(num_socket, rcv_msg, 1024, 0);
+
+        // Pour une chaine de n charactere, on ajoute \0 au charactere n+1 pour ne lire que ce qui est necessaire
+        rcv_msg[taille] = 0;
+
+        // Affichage en local du message recu
+
+    }
 
     close(num_socket);
-    free(tmp_msg);
-    return tmp_msg;
+    free(rcv_msg);
+    free(send_msg);
+    return 0;
 }

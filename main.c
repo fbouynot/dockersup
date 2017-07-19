@@ -29,6 +29,7 @@ int main(int argc, char *argv[])
         sleep(1);
         /* Création d'un Client TCP */
         Client("127.0.0.1",5000);
+        printf("Déconnexion du serveur.");
     }
 
     return 0;

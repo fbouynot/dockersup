@@ -4,6 +4,6 @@ project(dockersup)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Werror")
 
 set(SOURCE_FILES
-        main.c ClientTCP.h ClientTCP.c ServerTCP.c ServerTCP.h Processmessage.c Processmessage.h)
+        main.c ClientTCP.h ClientTCP.c ServerTCP.c ServerTCP.h Processmessage.c Processmessage.h Action.c Action.h)
 
 add_executable(Projet_C ${SOURCE_FILES})
