@@ -3,7 +3,7 @@
 //
 
 #include "ServerTCP.h"
-#include "Getinfo.h"
+#include "Processmessage.h"
 
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -81,10 +81,29 @@ int Server(uint16_t port)
         // INVALID_SOCKET vaut -1
         if (num_service != -1)
         {
-            char * var_msg = malloc(sizeof(char) * 1024);
-            var_msg = GetInfo();
-            send(num_service, var_msg, strlen(var_msg), 0);
-            free(var_msg);
+            char *rcv_msg = malloc(sizeof(char) * 1024);
+            char *send_msg = malloc(sizeof(char) * 1024);
+            char * login;
+            int identified;
+            int try;
+            login = "";
+            identified = 0;
+            try = 0;
+            while (strcmp(send_msg, "BYE") != 0) {
+                /* réception du message */
+                ssize_t taille = recv(num_service, rcv_msg, 1024, 0);
+                if (taille < 0) {
+                    perror("Erreur inconnue.");
+                }
+
+                /* traitement du message */
+                send_msg = Processmessage(rcv_msg, &login, &identified, &try);
+
+                /* emission de la réponse */
+                send(num_service, send_msg, strlen(send_msg), 0);
+            }
+            free(rcv_msg);
+            free(send_msg);
         }
         num_service = -1;
     }

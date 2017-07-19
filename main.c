@@ -1,5 +1,5 @@
 #include "ServerTCP.h"
-#include "Menu.h"
+#include "ClientTCP.h"
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -24,9 +24,11 @@ int main(int argc, char *argv[])
     }
     else
     {
+        /* Bloc du client */
         /* On attend une seconde que le serveur soit lancé */
         sleep(1);
-        Menu();
+        /* Création d'un Client TCP */
+        Client("127.0.0.1",5000);
     }
 
     return 0;
